@@ -37,15 +37,14 @@ test_requirements = requirements_dev[requirements_dev_split + 1:]  # +1: skip em
 
 setup(
     name='zfit-interface',
-    version='0.0.1',
     license='BSD-3-Clause',
     description='zfit model fitting interface for HEP',
     long_description='%s\n%s' % (
         re.compile('^.. start-badges.*^.. end-badges', re.M | re.S).sub('', read('README.rst')),
         re.sub(':[a-z]+:`~?(.*?)`', r'``\1``', read('CHANGELOG.rst'))
     ),
-    author=['Jonas Eschle', 'Albert Puig', 'Rafael Silva Coutinho', 'Matthieu Marinangeli'],
-    author_email=['Jonas.Eschle@cern.ch', 'apuignav@gmail.com', 'rsilvaco@cern.ch', 'matthieu.marinangeli@cern.ch'],
+    author='Jonas Eschle, Albert Puig, Rafael Silva Coutinho, Matthieu Marinangeli',
+    author_email='Jonas.Eschle@cern.ch, apuignav@gmail.com, rsilvaco@cern.ch, matthieu.marinangeli@cern.ch',
     url='https://github.com/zfit/zfit-interface',
     packages=find_packages('zfit_interface'),
     package_dir={'': 'zfit_interface'},
