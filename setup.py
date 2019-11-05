@@ -1,27 +1,39 @@
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
-from __future__ import absolute_import
-from __future__ import print_function
-
 import io
 import re
-from glob import glob
-from os.path import basename
-from os.path import dirname
-from os.path import join
-from os.path import splitext
-
+import os
+import glob
 from setuptools import find_packages
 from setuptools import setup
 
 
 def read(*names, **kwargs):
     with io.open(
-        join(dirname(__file__), *names),
+        os.path.join(os.path.dirname(__file__), *names),
         encoding=kwargs.get('encoding', 'utf8')
     ) as fh:
         return fh.read()
 
+
+here = os.path.abspath(os.path.dirname(__file__))
+
+with open(os.path.join(here, 'requirements.txt'), encoding='utf-8') as requirements_file:
+    requirements = requirements_file.read().splitlines()
+
+with open(os.path.join(here, 'requirements_dev.txt'), encoding='utf-8') as requirements_dev_file:
+    requirements_dev = requirements_dev_file.read().splitlines()
+
+# split the developer requirements into setup and test requirements
+if not requirements_dev.count("") == 1 or requirements_dev.index("") == 0:
+    raise SyntaxError("requirements_dev.txt has the wrong format: setup and test "
+                      "requirements have to be separated by one blank line.")
+requirements_dev_split = requirements_dev.index("")
+
+setup_requirements = ["pip>9",
+                      "setuptools_scm",
+                      "setuptools_scm_git_archive"]
+test_requirements = requirements_dev[requirements_dev_split + 1:]  # +1: skip empty line
 
 setup(
     name='zfit-interface',
@@ -32,36 +44,25 @@ setup(
         re.compile('^.. start-badges.*^.. end-badges', re.M | re.S).sub('', read('README.rst')),
         re.sub(':[a-z]+:`~?(.*?)`', r'``\1``', read('CHANGELOG.rst'))
     ),
-    author='Jonas Eschle',
-    author_email='jonas.eschle@cern.ch',
+    author=['Jonas Eschle', 'Albert Puig', 'Rafael Silva Coutinho', 'Matthieu Marinangeli'],
+    author_email=['Jonas.Eschle@cern.ch', 'apuignav@gmail.com', 'rsilvaco@cern.ch', 'matthieu.marinangeli@cern.ch'],
     url='https://github.com/zfit/zfit-interface',
-    packages=find_packages('src'),
-    package_dir={'': 'src'},
-    py_modules=[splitext(basename(path))[0] for path in glob('src/*.py')],
+    packages=find_packages('zfit-interface'),
+    package_dir={'': 'zfit-interface'},
+    py_modules=[os.path.splitext(os.path.basename(path))[0] for path in glob.glob('zfit-interface/*.py')],
     include_package_data=True,
     zip_safe=False,
     classifiers=[
-        # complete classifier list: http://pypi.python.org/pypi?%3Aaction=list_classifiers
-        'Development Status :: 5 - Production/Stable',
-        'Intended Audience :: Developers',
+        'Development Status :: 4 - Beta',
+        'Intended Audience :: Science/Research',
         'License :: OSI Approved :: BSD License',
+        'Natural Language :: English',
+        'Operating System :: MacOS',
         'Operating System :: Unix',
-        'Operating System :: POSIX',
-        'Operating System :: Microsoft :: Windows',
-        'Programming Language :: Python',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: Implementation :: CPython',
-        'Programming Language :: Python :: Implementation :: PyPy',
-        # uncomment if you test on these interpreters:
-        # 'Programming Language :: Python :: Implementation :: IronPython',
-        # 'Programming Language :: Python :: Implementation :: Jython',
-        # 'Programming Language :: Python :: Implementation :: Stackless',
-        'Topic :: Utilities',
+        'Topic :: Scientific/Engineering :: Physics',
     ],
     project_urls={
         'Documentation': 'https://zfit-interface.readthedocs.io/',
@@ -69,20 +70,13 @@ setup(
         'Issue Tracker': 'https://github.com/zfit/zfit-interface/issues',
     },
     keywords=[
-        # eg: 'keyword1', 'keyword2', 'keyword3',
+        'model fitting', 'HEP',
     ],
-    python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*',
-    install_requires=[
-        # eg: 'aspectlib==1.1.1', 'six>=1.7',
-    ],
-    extras_require={
-        # eg:
-        #   'rst': ['docutils>=0.11'],
-        #   ':python_version=="2.6"': ['argparse'],
-    },
-    entry_points={
-        'console_scripts': [
-            'zfit-interface = zfit_interface.cli:main',
-        ]
-    },
+    python_requires='>=3.6',
+    install_requires=requirements,
+    setup_requires=setup_requirements,
+    test_suite='tests',
+    tests_require=test_requirements,
+    use_scm_version=True,
+
 )
