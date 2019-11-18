@@ -48,7 +48,7 @@ setup(
     url='https://github.com/zfit/zfit-interface',
     packages=find_packages('zfit_interface'),
     package_dir={'': 'zfit_interface'},
-    py_modules=[os.path.splitext(os.path.basename(path))[0] for path in glob.glob('zfit-interface/*.py')],
+    py_modules=[os.path.splitext(os.path.basename(path))[0] for path in glob.glob('zfit_interface/*.py')],
     include_package_data=True,
     zip_safe=False,
     classifiers=[
