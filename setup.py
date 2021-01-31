@@ -30,9 +30,6 @@ if not requirements_dev.count("") == 1 or requirements_dev.index("") == 0:
                       "requirements have to be separated by one blank line.")
 requirements_dev_split = requirements_dev.index("")
 
-setup_requirements = ["pip>9",
-                      "setuptools_scm",
-                      "setuptools_scm_git_archive"]
 test_requirements = requirements_dev[requirements_dev_split + 1:]  # +1: skip empty line
 
 setup(
@@ -73,9 +70,12 @@ setup(
     ],
     python_requires='>=3.6',
     install_requires=requirements,
-    setup_requires=setup_requirements,
+    test_requirements=test_requirements,
+    extras_require={
+        'dev': requirements_dev
+    },
     test_suite='tests',
-    tests_require=test_requirements,
     use_scm_version=True,
 
 )
+
