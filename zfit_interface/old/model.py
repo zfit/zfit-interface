@@ -2,14 +2,19 @@ from abc import abstractmethod
 
 
 class ZfitModel:
-
     @abstractmethod
-    def update_integration_options(self, *args, **kwargs):  # TODO: handling integration properly
+    def update_integration_options(
+        self, *args, **kwargs
+    ):  # TODO: handling integration properly
         raise NotImplementedError
 
     @abstractmethod
-    def integrate(self, limits: ztyping.LimitsType, norm_range: ztyping.LimitsType = None,
-                  name: str = "integrate") -> ztyping.XType:
+    def integrate(
+        self,
+        limits: ztyping.LimitsType,
+        norm_range: ztyping.LimitsType = None,
+        name: str = "integrate",
+    ) -> ztyping.XType:
         """Integrate the function over `limits` (normalized over `norm_range` if not False).
 
         Args:
@@ -25,10 +30,15 @@ class ZfitModel:
 
     @classmethod
     @abstractmethod
-    def register_analytic_integral(cls, func: Callable, limits: ztyping.LimitsType = None,
-                                   priority: int = 50, *,
-                                   supports_norm_range: bool = False,
-                                   supports_multiple_limits: bool = False):
+    def register_analytic_integral(
+        cls,
+        func: Callable,
+        limits: ztyping.LimitsType = None,
+        priority: int = 50,
+        *,
+        supports_norm_range: bool = False,
+        supports_multiple_limits: bool = False
+    ):
         """Register an analytic integral with the class.
 
         Args:
@@ -39,13 +49,16 @@ class ZfitModel:
             supports_norm_range:
 
         Returns:
-
         """
         raise NotImplementedError
 
     @abstractmethod
-    def partial_integrate(self, x: ztyping.XType, limits: ztyping.LimitsType,
-                          norm_range: ztyping.LimitsType = None) -> ztyping.XType:
+    def partial_integrate(
+        self,
+        x: ztyping.XType,
+        limits: ztyping.LimitsType,
+        norm_range: ztyping.LimitsType = None,
+    ) -> ztyping.XType:
         """Partially integrate the function over the `limits` and evaluate it at `x`.
 
         Dimension of `limits` and `x` have to add up to the full dimension and be therefore equal
@@ -97,9 +110,10 @@ class ZfitFunc(ZfitModel):
 
 
 class ZfitPDF(ZfitModel):
-
     @abstractmethod
-    def pdf(self, x: ztyping.XType, norm_range: ztyping.LimitsType = None) -> ztyping.XType:
+    def pdf(
+        self, x: ztyping.XType, norm_range: ztyping.LimitsType = None
+    ) -> ztyping.XType:
         raise NotImplementedError
 
     @property
@@ -129,7 +143,6 @@ class ZfitPDF(ZfitModel):
 
 
 class ZfitFunctorMixin:
-
     @property
     @abstractmethod
     def models(self) -> Dict[Union[float, int, str], ZfitModel]:

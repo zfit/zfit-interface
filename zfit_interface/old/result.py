@@ -1,13 +1,15 @@
-from abc import abstractmethod
-from typing import Mapping, Union
+from __future__ import annotations
 
-from zfit_interface.loss import ZfitMinimalLoss
-from zfit_interface.minimizer import ZfitMinimizer
-from zfit_interface.param import ZfitParameter
+from abc import abstractmethod
+from collections.abc import Mapping
+from typing import Union
+
+from zfit_interface.old.loss import ZfitMinimalLoss
+from zfit_interface.old.minimizer import ZfitMinimizer
+from zfit_interface.old.param import ZfitParameter
 
 
 class ZfitMinimalResult:
-
     @property
     @abstractmethod
     def minimizer(self) -> ZfitMinimizer:
@@ -15,7 +17,7 @@ class ZfitMinimalResult:
 
     @property
     @abstractmethod
-    def params(self) -> Mapping[Union[ZfitParameter], Mapping[str, object]]:
+    def params(self) -> Mapping[ZfitParameter, Mapping[str, object]]:
         raise NotImplementedError
 
     @property
@@ -58,17 +60,17 @@ class ZfitResult:
     def errors(self, params, method, sigma):
         """Calculate and set for `params` the asymmetric error using the set error method.
 
-            Args:
-                params: The parameters or their names to calculate the
-                     errors. If `params` is `None`, use all *floating* parameters.
-                method: The method to use to calculate the errors. Valid choices are
-                    {'minuit_minos'} or a Callable.
+        Args:
+            params: The parameters or their names to calculate the
+                 errors. If `params` is `None`, use all *floating* parameters.
+            method: The method to use to calculate the errors. Valid choices are
+                {'minuit_minos'} or a Callable.
 
-            Returns:
-                A `OrderedDict` containing as keys the parameter names and as value a `dict` which
-                    contains (next to probably more things) two keys 'lower' and 'upper',
-                    holding the calculated errors.
-                    Example: result['par1']['upper'] -> the asymmetric upper error of 'par1'
+        Returns:
+            A `OrderedDict` containing as keys the parameter names and as value a `dict` which
+                contains (next to probably more things) two keys 'lower' and 'upper',
+                holding the calculated errors.
+                Example: result['par1']['upper'] -> the asymmetric upper error of 'par1'
         """
         raise NotImplementedError
 

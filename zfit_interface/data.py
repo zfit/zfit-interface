@@ -1,24 +1,33 @@
-from abc import abstractmethod
-from typing import List
-
-import numpy as np
-
-
 class ZfitData:
-
-    @abstractmethod
-    def value(self, obs: List[str] = None) -> np.typ:
-        raise NotImplementedError
-
-    @abstractmethod
-    def sort_by_obs(self, obs, allow_superset: bool = True):
-        raise NotImplementedError
-
-    @abstractmethod
-    def sort_by_axes(self, axes, allow_superset: bool = True):
+    def values(self):
         raise NotImplementedError
 
     @property
-    @abstractmethod
+    def space(self):
+        raise NotImplementedError
+
+    @property
+    def is_binned(self):
+        raise NotImplementedError
+
+    @property
+    def is_unbinned(self):
+        raise NotImplementedError
+
+
+class ZfitHistData(ZfitData):
+    def variances(self):
+        raise NotImplementedError
+
+    @property
+    def axes(self):
+        raise NotImplementedError
+
+    def counts(self):
+        raise NotImplementedError
+
+
+class ZfitMixedData(ZfitData):
+    @property
     def weights(self):
         raise NotImplementedError

@@ -33,5 +33,3 @@ jobs:
         run: |
           pip install --use-feature=2020-resolver .[dev]
           coverage run --source=. --branch -m py.test
-
-

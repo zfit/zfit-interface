@@ -2,7 +2,6 @@ from abc import abstractmethod
 
 
 class ZfitParameterValue:
-
     @property
     @abstractmethod
     def name(self) -> str:
@@ -24,7 +23,6 @@ class ZfitParameterValue:
 
 
 class ZfitParameter(ZfitParameterValue):
-
     @abstractmethod
     def set_value(self, value):
         """Set the :py:class:`~zfit.Parameter` to `value` (temporarily if used in a context manager).
@@ -42,9 +40,6 @@ class ZfitParameter(ZfitParameterValue):
     # def has_limits(self) -> bool:
     #     """If the parameter has limits set or not."""
     #     raise NotImplementedError
-
-
-
 
     @property
     @abstractmethod()

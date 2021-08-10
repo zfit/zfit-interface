@@ -2,7 +2,6 @@ from abc import abstractmethod
 
 
 class ZfitMinimalLoss:
-
     @abstractmethod
     def gradients(self, params: ztyping.ParamTypeInput = None) -> List[float]:
         raise NotImplementedError
@@ -10,7 +9,6 @@ class ZfitMinimalLoss:
     @abstractmethod
     def value(self) -> ztyping.NumericalTypeReturn:
         raise NotImplementedError
-
 
     @property
     @abstractmethod
