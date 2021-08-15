@@ -3,7 +3,7 @@ class ZfitData:
         raise NotImplementedError
 
     @property
-    def space(self):
+    def axes(self):
         raise NotImplementedError
 
     @property
@@ -19,9 +19,9 @@ class ZfitHistData(ZfitData):
     def variances(self):
         raise NotImplementedError
 
-    @property
-    def axes(self):
-        raise NotImplementedError
+    # @property
+    # def axes(self):
+    #     raise NotImplementedError
 
     def counts(self):
         raise NotImplementedError
