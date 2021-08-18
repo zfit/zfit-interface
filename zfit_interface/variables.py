@@ -46,6 +46,8 @@ class ZfitBinning:
 
 
 class PlottableTraits:
+    __slots__ = ["_circular", "_discrete"]
+
     def __init__(self, circular: bool = None, discrete: bool = None):
         self._circular = False if circular is None else circular
         self._discrete = False if discrete is None else discrete
@@ -68,8 +70,17 @@ class PlottableTraits:
         return not (self.circular ^ o.circular or self.discrete ^ o.discrete)
 
 
+continuous_trait = PlottableTraits(circular=False, discrete=False)
+
+
 class BaseBinning(ZfitBinning):
-    pass
+    def __init__(self, traits: PlottableTraits = None, **kwargs) -> None:
+        super().__init__(**kwargs)
+        traits._traits = traits if traits is not None else continuous_trait
+
+    @property
+    def traits(self) -> PlottableTraits:
+        return self._traits
 
 
 class BaseVar(ZfitVar):
