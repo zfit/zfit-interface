@@ -47,7 +47,7 @@ repos:
       - id: isort
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v2.23.1
+    rev: v2.24.0
     hooks:
       - id: pyupgrade
         args: [ --py37-plus ]
@@ -81,13 +81,12 @@ repos:
       - id: jupyter-notebook-cleanup
 
   - repo: https://github.com/sondrelg/pep585-upgrade
-    rev: '5f7033a0d0174c65105b041500060b993c1bc211'  # Use the sha / tag you want to point at
+    rev: 'ab1595ee0aa8823dcda1f0bd95b2c194fcd5362b'  # Use the sha / tag you want to point at
     hooks:
       - id: upgrade-type-hints
         args: [ '--futures=true' ]
 
   - repo: https://github.com/ambv/black
-    rev: stable
+    rev: 21.7b0
     hooks:
       - id: black
-        language_version: python3.7

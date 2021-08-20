@@ -136,7 +136,7 @@ class ZfitAxis(ZfitVar):
         raise NotImplementedError
 
 
-class ZfitSpace(ZfitVars):
+class ZfitSpace(ZfitVar):  # TODO: how to name things?
     @property
     def lower(self) -> ztyping.RealScalar:
         raise NotImplementedError
