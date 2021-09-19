@@ -1,7 +1,11 @@
 from zfit_interface.func import ZfitFunc
 from zfit_interface.typing import ArrayLike
+from zfit_interface.typing import LimitsInputType
 from zfit_interface.typing import NormInputType
+from zfit_interface.typing import OptionsInputType
 from zfit_interface.typing import VarInputType
+from zfit_interface.variables import ZfitComposedVariable
+from zfit_interface.variables import ZfitSpace
 
 
 class ZfitPDF(ZfitFunc):
@@ -40,21 +44,36 @@ class ZfitPDF(ZfitFunc):
         """
         raise NotImplementedError
 
-    def integrate(self, limits, *, norm=None, var=None, options=None):
+    def integrate(
+        self,
+        limits: LimitsInputType = None,
+        *,
+        norm: NormInputType = None,
+        var: VarInputType = None,
+        options: OptionsInputType = None
+    ) -> ArrayLike:
         """Integrate (analytically, otherwise numerically) over *limits*."""
         raise NotImplementedError
 
-    def ext_integrate(self, limits, *, norm=None, var=None, options=None):
+    def ext_integrate(self, limits=None, *, norm=None, var=None, options=None):
         raise NotImplementedError
 
-    def sample(self, n, limits=None, *, var=None, options=None):
+    def sample(self, n=None, limits=None, *, var=None, options=None):
         raise NotImplementedError
 
     @property
-    def is_extended(self):
+    def is_extended(self) -> bool:
         raise NotImplementedError
 
-    def get_yield(self):
+    def get_yield(self) -> ZfitComposedVariable:
+        raise NotImplementedError
+
+    @property
+    def space(self) -> ZfitSpace:
+        raise NotImplementedError
+
+    @property
+    def norm(self) -> ZfitSpace:
         raise NotImplementedError
 
 
