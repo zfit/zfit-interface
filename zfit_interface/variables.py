@@ -202,3 +202,7 @@ class ZfitParams(ZfitVars):
     @property
     def floating(self) -> ztyping.ArrayLike:
         raise NotImplementedError
+
+
+class ZfitComposedVariable(ZfitVar):
+    pass

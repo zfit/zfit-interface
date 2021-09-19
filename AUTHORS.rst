@@ -6,3 +6,4 @@ Authors
 | Albert Puig <apuignav@gmail.com>
 | Rafael Silva Coutinho <rsilvaco@cern.ch>
 | Matthieu Marinangeli <matthieu.marinangeli@cern.ch>
+| Nicola Serra <nicola.serra@cern.ch>
