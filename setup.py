@@ -15,12 +15,6 @@ with open(
 ) as requirements_dev_file:
     requirements_dev = requirements_dev_file.read().splitlines()
 
-requirements_dev_split = requirements_dev.index("")
-
-test_requirements = requirements_dev[
-    requirements_dev_split + 1 :
-]  # +1: skip empty line
-
 setup(
     project_urls={
         "Documentation": "https://zfit-interface.readthedocs.io/",
@@ -28,7 +22,7 @@ setup(
         "Issue Tracker": "https://github.com/zfit/zfit-interface/issues",
     },
     install_requires=requirements,
-    test_requirements=test_requirements,
+    # test_requirements=test_requirements,
     extras_require={"dev": requirements_dev},
     use_scm_version=True,
 )
