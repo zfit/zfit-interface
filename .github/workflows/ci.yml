@@ -36,4 +36,4 @@ jobs:
       - name: Test with pytest
         run: |
           pip install .[dev]
-          coverage run --source=. --branch -m py.test
+          coverage run --source=. --branch -m pytest
