@@ -1,9 +1,13 @@
+from __future__ import annotations
+
 from abc import abstractmethod
+
+import zfit_interface.typing as ztyping
 
 
 class ZfitMinimalLoss:
     @abstractmethod
-    def gradients(self, params: ztyping.ParamTypeInput = None) -> List[float]:
+    def gradients(self, params: ztyping.ParamTypeInput = None) -> list[float]:
         raise NotImplementedError
 
     @abstractmethod

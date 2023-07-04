@@ -1,4 +1,12 @@
+from __future__ import annotations
+
 from abc import abstractmethod
+from collections.abc import Callable
+from typing import List
+from typing import Union
+
+import zfit_interface.typing as ztyping
+from zfit_interface.old.param import ZfitParameter
 
 
 class ZfitModel:
@@ -37,7 +45,7 @@ class ZfitModel:
         priority: int = 50,
         *,
         supports_norm_range: bool = False,
-        supports_multiple_limits: bool = False
+        supports_multiple_limits: bool = False,
     ):
         """Register an analytic integral with the class.
 
@@ -126,11 +134,11 @@ class ZfitPDF(ZfitModel):
         raise NotImplementedError
 
     @abstractmethod
-    def create_extended(self, yield_: ztyping.ParamTypeInput) -> "ZfitPDF":
+    def create_extended(self, yield_: ztyping.ParamTypeInput) -> ZfitPDF:
         raise NotImplementedError
 
     @abstractmethod
-    def get_yield(self) -> Union[ZfitParameter, None]:
+    def get_yield(self) -> ZfitParameter | None:
         raise NotImplementedError
 
     @abstractmethod
@@ -145,9 +153,9 @@ class ZfitPDF(ZfitModel):
 class ZfitFunctorMixin:
     @property
     @abstractmethod
-    def models(self) -> Dict[Union[float, int, str], ZfitModel]:
+    def models(self) -> dict[float | int | str, ZfitModel]:
         raise NotImplementedError
 
     @abstractmethod
-    def get_models(self) -> List[ZfitModel]:
+    def get_models(self) -> list[ZfitModel]:
         raise NotImplementedError
