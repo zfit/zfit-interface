@@ -8,17 +8,15 @@ repos:
       - id: check-added-large-files
         args: [ '--maxkb=1000' ]
       - id: check-case-conflict
-      #      - id: check-merge-conflict
+      - id: check-merge-conflict
       - id: check-symlinks
       - id: check-yaml
       - id: check-toml
       - id: debug-statements
-#      - id: end-of-file-fixer  # conflicts with PyCharm?
       - id: mixed-line-ending
       - id: requirements-txt-fixer
       - id: trailing-whitespace
       - id: detect-private-key
-      #          - id: name-tests-test
       - id: fix-byte-order-marker
       - id: check-ast
 
@@ -33,12 +31,12 @@ repos:
     hooks:
       - id: sign-commit
   - repo: https://github.com/pre-commit/pygrep-hooks
-    rev: v1.10.0 # Use the ref you want to point at
+    rev: v1.10.0
     hooks:
       - id: python-use-type-annotations
       - id: python-check-mock-methods
       - id: python-no-eval
-      #          - id: rst-backticks
+      #          - id: rst-backticks  # TODO: false positives with coding blocks?
       - id: rst-directive-colons
 
   - repo: https://github.com/PyCQA/isort

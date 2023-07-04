@@ -11,14 +11,6 @@ pytest-runner>=2.11.1
 pytest-xdist
 setuptools>=30.3.0
 setuptools_scm[toml]>=3.4
-Sphinx>=3.5.4
-sphinx-autodoc-typehints
-sphinx-copybutton
-sphinx-panels
-sphinx_bootstrap_theme
-sphinxcontrib-bibtex
-sphinxcontrib-images
-sphinxcontrib-youtube>=1.0.0
 tox>=2.9.1
 twine>=1.10.0
 watchdog>=0.8.3
