@@ -8,10 +8,7 @@ from typing import Mapping
 from typing import Tuple
 from typing import Union
 
-if sys.version_info < (3, 8):
-    from typing_extensions import Protocol
-else:
-    from typing import Protocol
+from typing import Protocol
 
 import zfit_interface.data as data
 import zfit_interface.variables as variables
