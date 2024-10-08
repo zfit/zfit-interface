@@ -1,13 +1,14 @@
 from __future__ import annotations
 
 from abc import abstractmethod
+from typing import Optional
 
 import numpy as np
 
 
 class ZfitData:
     @abstractmethod
-    def value(self, obs: list[str] = None) -> np.typ:
+    def value(self, obs: Optional[list[str]] = None) -> np.typ:
         raise NotImplementedError
 
     @abstractmethod

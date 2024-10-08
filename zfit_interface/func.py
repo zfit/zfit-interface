@@ -2,8 +2,7 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 
-from zfit_interface.typing import ArrayLike
-from zfit_interface.typing import VarInputType
+from zfit_interface.typing import ArrayLike, VarInputType
 from zfit_interface.variables import ZfitVar
 
 
