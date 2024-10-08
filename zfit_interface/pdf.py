@@ -1,32 +1,23 @@
+from __future__ import annotations
+
 from zfit_interface.func import ZfitFunc
-from zfit_interface.typing import ArrayLike
-from zfit_interface.typing import LimitsInputType
-from zfit_interface.typing import NormInputType
-from zfit_interface.typing import OptionsInputType
-from zfit_interface.typing import VarInputType
-from zfit_interface.variables import ZfitComposedVariable
-from zfit_interface.variables import ZfitSpace
+from zfit_interface.typing import ArrayLike, LimitsInputType, NormInputType, OptionsInputType, VarInputType
+from zfit_interface.variables import ZfitComposedVariable, ZfitSpace
 
 
 class ZfitPDF(ZfitFunc):
-    def pdf(
-        self, var: VarInputType, norm: NormInputType = None, *, options=None
-    ) -> ArrayLike:
+    def pdf(self, var: VarInputType, norm: NormInputType = None, *, options=None) -> ArrayLike:
         """Probability density of the defined function, normalized over *norm* to 1."""
         raise NotImplementedError
 
-    def ext_pdf(
-        self, var: VarInputType, norm: NormInputType = None, *, options=None
-    ) -> ArrayLike:
+    def ext_pdf(self, var: VarInputType, norm: NormInputType = None, *, options=None) -> ArrayLike:
         """Probability density of the defined function, normalized over *norm* to the yield.
 
         This method is only available for extended PDFs.
         """
         raise NotImplementedError
 
-    def counts(
-        self, var: VarInputType, norm: NormInputType, *, options=None
-    ) -> ArrayLike:
+    def counts(self, var: VarInputType, norm: NormInputType, *, options=None) -> ArrayLike:
         """Counts of a histogram, corresponds to the integral over *ext_pdf* for the bin edges.
 
         This method corresponds to the "frequency" of a histogram.
@@ -35,9 +26,7 @@ class ZfitPDF(ZfitFunc):
         """
         raise NotImplementedError
 
-    def rel_counts(
-        self, var: VarInputType, norm: NormInputType, *, options=None
-    ) -> ArrayLike:
+    def rel_counts(self, var: VarInputType, norm: NormInputType, *, options=None) -> ArrayLike:
         """Relative counts of a histogram, corresponds to the integral over *pdf* for the bin edges.
 
         This method corresponds to the "relative frequency" of a histogram.
@@ -50,7 +39,7 @@ class ZfitPDF(ZfitFunc):
         *,
         norm: NormInputType = None,
         var: VarInputType = None,
-        options: OptionsInputType = None
+        options: OptionsInputType = None,
     ) -> ArrayLike:
         """Integrate (analytically, otherwise numerically) over *limits*."""
         raise NotImplementedError

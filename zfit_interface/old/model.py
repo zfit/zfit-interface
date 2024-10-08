@@ -2,8 +2,6 @@ from __future__ import annotations
 
 from abc import abstractmethod
 from collections.abc import Callable
-from typing import List
-from typing import Union
 
 import zfit_interface.typing as ztyping
 from zfit_interface.old.param import ZfitParameter
@@ -11,9 +9,7 @@ from zfit_interface.old.param import ZfitParameter
 
 class ZfitModel:
     @abstractmethod
-    def update_integration_options(
-        self, *args, **kwargs
-    ):  # TODO: handling integration properly
+    def update_integration_options(self, *args, **kwargs):  # TODO: handling integration properly
         raise NotImplementedError
 
     @abstractmethod
@@ -119,9 +115,7 @@ class ZfitFunc(ZfitModel):
 
 class ZfitPDF(ZfitModel):
     @abstractmethod
-    def pdf(
-        self, x: ztyping.XType, norm_range: ztyping.LimitsType = None
-    ) -> ztyping.XType:
+    def pdf(self, x: ztyping.XType, norm_range: ztyping.LimitsType = None) -> ztyping.XType:
         raise NotImplementedError
 
     @property

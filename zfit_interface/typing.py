@@ -1,20 +1,10 @@
 from __future__ import annotations
 
-import sys
-from typing import TYPE_CHECKING
-from typing import Any
-from typing import Iterable
-from typing import Mapping
-from typing import Protocol
-from typing import Tuple
-from typing import Union
+from typing import TYPE_CHECKING, Any, Iterable, Mapping, Union
 
-import zfit_interface.data as data
-import zfit_interface.variables as variables
+from zfit_interface import data, variables
 
 if TYPE_CHECKING:
-    from builtins import ellipsis
-
     import tensorflow as tf
     from numpy.typing import ArrayLike
 

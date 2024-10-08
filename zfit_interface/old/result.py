@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from abc import abstractmethod
 from collections.abc import Mapping
-from typing import Union
 
 from zfit_interface.old.loss import ZfitMinimalLoss
 from zfit_interface.old.minimizer import ZfitMinimizer
