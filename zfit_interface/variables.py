@@ -47,7 +47,7 @@ class ZfitBinning:
 class PlottableTraits:
     __slots__ = ["_circular", "_discrete"]
 
-    def __init__(self, circular: typing.Optional[bool] = None, discrete: typing.Optional[bool] = None):
+    def __init__(self, circular: bool | None = None, discrete: bool | None = None):
         self._circular = False if circular is None else circular
         self._discrete = False if discrete is None else discrete
 
@@ -83,7 +83,7 @@ class BaseBinning(ZfitBinning):
 
 
 class BaseVar(ZfitVar):
-    def __init__(self, name: str, binning: ZfitBinning = None, label: typing.Optional[str] = None):
+    def __init__(self, name: str, binning: ZfitBinning = None, label: str | None = None):
         self._name = name
         self._label = label
         self._binning = self._check_input_init_binning(binning)
