@@ -29,8 +29,7 @@ class ZfitVar:
 
 class ZfitBinning:
     @property
-    def traits(self) -> PlottableTraits:
-        ...
+    def traits(self) -> PlottableTraits: ...
 
     def __getitem__(self, index: int) -> T:
         """Get the pair of edges (not discrete) or bin label (discrete)."""
