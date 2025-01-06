@@ -3,7 +3,7 @@ ci:
 
 repos:
     -   repo: https://github.com/pre-commit/pre-commit-hooks
-        rev: v4.5.0
+        rev: v5.0.0
         hooks:
             -   id: check-added-large-files
                 args: [ '--maxkb=1000' ]
@@ -41,19 +41,19 @@ repos:
             -   id: isort
 
     -   repo: https://github.com/asottile/pyupgrade
-        rev: v3.15.0
+        rev: v3.19.1
         hooks:
             -   id: pyupgrade
                 args: [ --py38-plus ]
 
     -   repo: https://github.com/asottile/setup-cfg-fmt
-        rev: v2.5.0
+        rev: v2.7.0
         hooks:
             -   id: setup-cfg-fmt
 
     # Notebook formatting
     -   repo: https://github.com/nbQA-dev/nbQA
-        rev: 1.7.1
+        rev: 1.9.1
         hooks:
             -   id: nbqa-isort
                 additional_dependencies: [ isort ]
@@ -63,7 +63,7 @@ repos:
                 args: [ --py38-plus ]
 
     -   repo: https://github.com/mgedmin/check-manifest
-        rev: '0.49'
+        rev: '0.50'
         hooks:
             -   id: check-manifest
                 stages: [ manual ]
@@ -81,7 +81,7 @@ repos:
                 args: [ '--futures=true' ]
 
     -   repo: https://github.com/astral-sh/ruff-pre-commit
-        rev: "v0.5.0"
+        rev: "v0.8.6"
         hooks:
             -   id: ruff
                 types_or: [ python, pyi, jupyter ]
