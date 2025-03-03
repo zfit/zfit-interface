@@ -4,9 +4,9 @@ import typing
 from collections.abc import Iterable
 from typing import T
 
-from uhi.typing.plottable import PlottableTraits
-
 import zfit_interface.typing as ztyping
+
+# from uhi.typing.plottable import PlottableTraits
 
 
 class ZfitVar:

@@ -30,11 +30,6 @@ repos:
             #          - id: rst-backticks  # TODO: false positives with coding blocks?
             -   id: rst-directive-colons
 
-    -   repo: https://github.com/PyCQA/isort
-        rev: 6.0.1
-        hooks:
-            -   id: isort
-
     -   repo: https://github.com/asottile/pyupgrade
         rev: v3.19.1
         hooks:

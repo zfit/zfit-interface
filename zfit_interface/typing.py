@@ -1,8 +1,7 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Iterable, Mapping, Union
-
-from zfit_interface import data, variables
+from collections.abc import Iterable, Mapping
+from typing import TYPE_CHECKING, Any, Union
 
 if TYPE_CHECKING:
     import tensorflow as tf
