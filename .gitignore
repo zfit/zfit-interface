@@ -69,3 +69,4 @@ docs/_build
 
 # Mypy Cache
 .mypy_cache/
+/docs/.jupiter_cache/

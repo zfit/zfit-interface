@@ -20,11 +20,6 @@ repos:
             -   id: fix-byte-order-marker
             -   id: check-ast
 
-    -   repo: https://github.com/PyCQA/docformatter
-        rev: v1.7.5
-        hooks:
-            -   id: docformatter
-                args: [ -r, --in-place, --wrap-descriptions, '120', --wrap-summaries, '120', -- ]
 
     -   repo: https://github.com/pre-commit/pygrep-hooks
         rev: v1.10.0
@@ -36,7 +31,7 @@ repos:
             -   id: rst-directive-colons
 
     -   repo: https://github.com/PyCQA/isort
-        rev: 5.13.2
+        rev: 6.0.1
         hooks:
             -   id: isort
 
@@ -62,11 +57,6 @@ repos:
                 additional_dependencies: [ pyupgrade ]
                 args: [ --py38-plus ]
 
-    -   repo: https://github.com/mgedmin/check-manifest
-        rev: '0.50'
-        hooks:
-            -   id: check-manifest
-                stages: [ manual ]
 
 
     -   repo: https://github.com/roy-ht/pre-commit-jupyter
@@ -81,7 +71,7 @@ repos:
                 args: [ '--futures=true' ]
 
     -   repo: https://github.com/astral-sh/ruff-pre-commit
-        rev: "v0.8.6"
+        rev: "v0.9.9"
         hooks:
             -   id: ruff
                 types_or: [ python, pyi, jupyter ]
