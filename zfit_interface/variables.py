@@ -37,7 +37,7 @@ class ZfitBinning:
     def __len__(self) -> int:
         """Return the number of bins (not counting flow bins, which are ignored for this Protocol currently)."""
 
-    def __eq__(self, other: typing.Any) -> bool:
+    def __eq__(self, other: object) -> bool:
         """Required to be sequence-like."""
 
     def __iter__(self) -> typing.Iterator[T]:
